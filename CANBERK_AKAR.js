@@ -43,9 +43,10 @@
   };
 
   self.buildCSS = () => {
-    //page styles
+    // page styles
     // the style for the favorite icon is written in this area.
-    //also the styles of the arrows that allow transition to the carousel are in this area.
+    // also the styles of the arrows that allow transition to the carousel are in this area.
+    // @media feature is used for responsive design.
     const css = `
       body {
         font-family: "Open Sans", sans-serif;
@@ -172,6 +173,13 @@
   };
 
   self.setEvents = () => {
+    //querySelector() is used to select the first element with a certain class
+    // querySelectorAll() is used to get all elements with the same class.
+    //addEventListener() allows the carousel to move by adding click events to the buttons.
+    //style.transform manages the scroll effect by moving the carousel left or right with the translateX() method.
+    //localStorage prevents the user's favorite selections from being lost even if the page is refreshed by storing them in the browser.
+    //closest() method is used to find the closest parent element of the clicked element and thus access the dataset.id value of the relevant product.
+    //classList.add() and classList.remove() manage visual changes by adding and removing the "filled" class when the heart icon is clicked.
     const width = 350;
     let index = 0;
 
@@ -219,6 +227,11 @@
   };
 
   const loadProducts = async () => {
+  // The loadProducts method retrieves the product data via a GET request from the corresponding URL. 
+  // The try-catch block is used to provide error handling. Thus, during the request 
+  // Any errors are caught and printed to the console.
+  // If there is no data in localStorage, a fetch request is made to the corresponding URL 
+  // Successful response is received, it is converted to JSON format and saved in localStorage.     
     try {
       const cachedProducts = localStorage.getItem("products");
       if (cachedProducts) {

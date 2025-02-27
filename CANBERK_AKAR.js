@@ -174,7 +174,7 @@
 
   self.setEvents = () => {
     //querySelector() is used to select the first element with a certain class
-    // querySelectorAll() is used to get all elements with the same class.
+    //querySelectorAll() is used to get all elements with the same class.
     //addEventListener() allows the carousel to move by adding click events to the buttons.
     //style.transform manages the scroll effect by moving the carousel left or right with the translateX() method.
     //localStorage prevents the user's favorite selections from being lost even if the page is refreshed by storing them in the browser.
@@ -254,6 +254,11 @@
   };
 
   const renderProducts = (products) => {
+    // renderProducts function renders the HTML structure of each product using the given list of products and displays it on the page.  
+    // First, it selects the HTML element with class “.carousel” and clears its contents innerHTML 
+    // Then create a div element for each product.
+    // The necessary linking is made to open on the relevant page.
+    // Related product is sent to checkFavoriteStatus function.
     const wrapper = document.querySelector(".carousel");
     wrapper.innerHTML = "";
 
@@ -277,6 +282,12 @@
   };
 
   const checkFavoriteStatus = (productId) => {
+    // The checkFavoriteStatus function checks the favorite status of a product based on its ID.
+    // First, the product item is selected using querySelector by matching the data-id attribute with the productId.
+    // Then, the heart icon within the product is selected using querySelector.
+    // The function checks if the product is marked as favorite in localStorage.
+    // If it is a favorite, the 'filled' class is added to the heart icon, and its inner HTML is updated to display a filled heart.
+    // If it is not a favorite, the 'filled' class is removed and the heart icon is set to an empty heart.
     const favoritesProduct = document.querySelector(`.product-item[data-id="${productId}"]`);
     const heartIcon = favoritesProduct.querySelector(".heart-icon");
 

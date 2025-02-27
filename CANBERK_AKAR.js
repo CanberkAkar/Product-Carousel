@@ -17,7 +17,7 @@
     //Generate static HTML contents
     //I have a div  class called header and this class include other elements.
     //This div class include seachbar and product-detail.
-    //Product detail include carusel-container and arusel-container get value in end-points.
+    //Product detail include carusel-container and carusel-container get value in end-points.
     const html = `
     <div class="header">
         <div>
@@ -43,6 +43,9 @@
   };
 
   self.buildCSS = () => {
+    //page styles
+    // the style for the favorite icon is written in this area.
+    //also the styles of the arrows that allow transition to the carousel are in this area.
     const css = `
       body {
         font-family: "Open Sans", sans-serif;
@@ -53,7 +56,6 @@
         background-color: #f5f5f5;
         padding: 10px;
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
       }
@@ -81,7 +83,7 @@
         .title {
           font-size: 32px;
           font-weight: bold;
-          color: #0066cc; /* Mavi renk */
+          color: #0066cc; /*blue*/
           text-align: left;
           margin-top: 20px;
         }
@@ -106,7 +108,6 @@
       }
       .product-item img {
         height: 250px;
-        object-fit: cover;
         border: 1px solid #ccc; 
         border-radius: 0; 
       }
@@ -177,8 +178,8 @@
     document.querySelector(".button-go").addEventListener("click", () => {
       const totalProducts =
         document.querySelectorAll(".product-item").length;
-      const maxIndex = totalProducts - 3;
-      if (index < maxIndex) {
+        const maxIndex = Math.floor(totalProducts - 6.5);
+        if (index < maxIndex) {
         index++;
         document.querySelector(
           ".carousel"
